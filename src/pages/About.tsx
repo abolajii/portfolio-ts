@@ -14,6 +14,20 @@ const Paragraph = styled.p`
   margin-bottom: 20px;
 `;
 
+const Heading = styled.h2`
+  color: #4caf50;
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+const Line = styled.div`
+  background: linear-gradient(to left, #2d2d2d, #4caf50);
+  height: 3px;
+  width: 80px;
+  border-radius: 1px;
+  margin-bottom: 30px;
+`;
+
 const About = () => {
   //   const isMobile = useMediaQuery({ maxWidth: 768 });
 
@@ -23,6 +37,8 @@ const About = () => {
 
   return (
     <Container>
+      <Heading>About Me</Heading>
+      <Line />
       <Paragraph>
         Computer Science graduate with six years of full-stack development
         experience, specializing in HTML5, CSS, JavaScript, TypeScript, React

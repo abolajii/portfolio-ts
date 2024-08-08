@@ -208,8 +208,8 @@ const Home: React.FC = () => {
 
           <Description>
             With 6 years of experience, I specialize in building web
-            applications using TypeScript, React, Node.js, and Next.js. I'm
-            well-versed in Node.js for backend development, and I also have
+            applications using TypeScript, React, Redux, Node.js, and Next.js.
+            I'm well-versed in Node.js for backend development, and I also have
             experience in React Native for mobile app development.
           </Description>
 

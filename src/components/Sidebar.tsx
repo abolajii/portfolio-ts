@@ -38,11 +38,10 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) =>
-    props.isActive ? "rgb(76, 175, 80)" : "rgba(0, 255, 0, 0.3)"};
+  color: ${(props) => (props.isActive ? "#4caf50" : "rgba(0, 255, 0, 0.3)")};
 
   background: ${(props) =>
-    props.isActive ? "rgba(66, 107, 105, 0.15)" : "transparent"};
+    props.isActive ? "rgba(66, 107, 105, 0.20)" : "transparent"};
   margin-top: 5px;
 
   & > span {

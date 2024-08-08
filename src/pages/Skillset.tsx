@@ -1,11 +1,17 @@
 import { BiLogoFirebase, BiLogoTypescript } from "react-icons/bi";
 import { FaNodeJs, FaReact } from "react-icons/fa";
-import { SiMongodb, SiRedux, SiTailwindcss } from "react-icons/si";
+import {
+  SiMongodb,
+  SiRedux,
+  SiStyledcomponents,
+  SiTailwindcss,
+} from "react-icons/si";
 
 import { GrMysql } from "react-icons/gr";
 // SkillSet.tsx
 import React from "react";
 import styled from "styled-components";
+import { useSidebar } from "../store/useSidebar";
 
 const Inner = styled.div`
   background-color: #222222;
@@ -24,9 +30,12 @@ const SkillSet = () => {
 
 export default SkillSet;
 
-const Container = styled.div`
+const Container = styled.div<{ isOpen: boolean }>`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(${(props) => (props.isOpen ? "100px" : "110px")}, 1fr)
+  );
   gap: 25px;
   padding: 20px;
   border: 1px solid rgba(0, 255, 0, 0.07);
@@ -52,8 +61,10 @@ const IconWrapper = styled.div`
 `;
 
 const IconBox: React.FC = () => {
+  const { isOpen } = useSidebar();
+
   return (
-    <Container>
+    <Container isOpen={isOpen}>
       <IconWrapper>
         <FaNodeJs className="icon" color="#8CC84B" />
         <span>Node.js</span>
@@ -85,6 +96,10 @@ const IconBox: React.FC = () => {
       <IconWrapper>
         <SiMongodb className="icon" color="#47A248" />
         <span>MongoDB</span>
+      </IconWrapper>
+      <IconWrapper>
+        <SiStyledcomponents color="#DB7093" className="icon" />
+        <span>Styled</span>
       </IconWrapper>
     </Container>
   );

@@ -1,6 +1,38 @@
+import { BiLogoFirebase, BiLogoTypescript } from "react-icons/bi";
+import { FaNodeJs, FaReact } from "react-icons/fa";
+import {
+  SiMongodb,
+  SiRedux,
+  SiStyledcomponents,
+  SiTailwindcss,
+} from "react-icons/si";
+
+import { GrMysql } from "react-icons/gr";
 import { MdWorkHistory } from "react-icons/md";
 import styled from "styled-components";
 
+const iconMapping: Record<string, JSX.Element> = {
+  react: <FaReact size={20} color="#61dafb" />,
+  node: <FaNodeJs size={20} color="#8CC84B" />,
+  firebase: <BiLogoFirebase size={20} color="#FFCA28" />,
+  typescript: <BiLogoTypescript size={20} color="#3178C6" />,
+  mongodb: <SiMongodb size={20} color="#47A248" />,
+  redux: <SiRedux size={20} color="#764ABC" />,
+  styled: <SiStyledcomponents size={23} color="#DB7093" />,
+  tailwindcss: <SiTailwindcss size={20} color="#06B6D4" />,
+  mysql: <GrMysql size={20} color="#4479A1" />,
+};
+
+// Define project type with specific stack keys
+type ProjectType = {
+  id: number;
+  onGoing?: boolean;
+  name: string;
+  stacks: Array<keyof typeof iconMapping>;
+  initials: string;
+};
+
+// Styled Components (unchanged)
 const Container = styled.div`
   background-color: #222222;
   color: rgb(204, 204, 204);
@@ -31,7 +63,7 @@ const Container = styled.div`
   }
 
   .ongoing-icon {
-    background-color: rgb(230, 97, 153); /* Orange for On going */
+    background-color: rgb(230, 97, 153); /* Orange for Ongoing */
   }
 
   .icon-title {
@@ -43,7 +75,7 @@ const Container = styled.div`
   }
 
   .ongoing-title {
-    color: rgb(230, 97, 153); /* Orange for On going */
+    color: rgb(230, 97, 153); /* Orange for Ongoing */
   }
 `;
 
@@ -75,7 +107,6 @@ const Project = styled.div`
   display: grid;
   grid-template-rows: minmax(200px, 2fr) minmax(100px, 1fr); /* 2/3 for image, 1/3 for details */
   height: 100%;
-  /* border-radius: 9px; */
   background-color: #2d2d2d;
   color: rgb(204, 204, 204);
   overflow: hidden;
@@ -93,6 +124,8 @@ const DivB = styled.div`
   border-bottom-right-radius: 3px;
   padding: 10px;
   color: white;
+  display: flex;
+  flex-direction: column;
 `;
 
 const GridContainer = styled.div`
@@ -102,7 +135,69 @@ const GridContainer = styled.div`
   margin-top: 20px;
 `;
 
+const ProjectInitials = styled.div<{ bgColor: string }>`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: ${(props) => props.bgColor};
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 50%;
+`;
+
+const randomColor = () =>
+  `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+
 const Work = () => {
+  const projects: ProjectType[] = [
+    {
+      id: 1,
+      onGoing: false,
+      name: "Lovebird Dating Application",
+      stacks: ["react", "node", "firebase"],
+      initials: "LD",
+    },
+    {
+      id: 2,
+      onGoing: false,
+      name: "Lovebird Admin Page",
+      stacks: ["react", "node", "firebase"],
+      initials: "LA",
+    },
+    {
+      id: 3,
+      onGoing: true,
+      name: "Logistics Manager",
+      stacks: ["react", "node", "firebase"],
+      initials: "LM",
+    },
+    { id: 4, name: "FlatHub", stacks: ["react", "styled"], initials: "FH" },
+    {
+      id: 5,
+      name: "One Card Nigeria",
+      stacks: ["react", "firebase", "redux"],
+      initials: "OC",
+    },
+    {
+      id: 6,
+      name: "Afriskaut",
+      stacks: ["react", "tailwindcss", "node"],
+      initials: "AF",
+    },
+    { id: 7, name: "WestPay", stacks: ["react", "mongodb"], initials: "WP" },
+    {
+      id: 8,
+      name: "Connect Nigeria",
+      stacks: ["react", "mysql"],
+      initials: "CN",
+    },
+  ];
+
   return (
     <Container>
       <div className="flex">
@@ -137,47 +232,32 @@ const Work = () => {
       </div>
 
       <GridContainer>
-        <Project>
-          <DivA>
-            {/* Project Image or Content */}
-            <div className="flex justify-end">
-              <div className="ongoing-icon tag"></div>
-            </div>
-          </DivA>
-          <DivB>
-            {/* Project Details */}
-            <p>Project Title</p>
-            <p>Short Description</p>
-          </DivB>
-        </Project>
-        <Project>
-          <DivA>
-            {/* Project Image or Content */}
-
-            <div className="flex justify-end">
-              <div className="done-icon tag"></div>
-            </div>
-          </DivA>
-          <DivB>
-            {/* Project Details */}
-            <p>Project Title</p>
-            <p>Short Description</p>
-          </DivB>
-        </Project>
-        <Project>
-          <DivA>
-            {/* Project Image or Content */}
-            <div className="flex justify-end">
-              <div className="ongoing-icon tag"></div>
-            </div>
-          </DivA>
-          <DivB>
-            {/* Project Details */}
-            <p>Project Title</p>
-            <p>Short Description</p>
-          </DivB>
-        </Project>
-        {/* Add more Project components as needed */}
+        {projects.map((project) => (
+          <Project key={project.id}>
+            <DivA>
+              {/* Project Image or Content */}
+              <div className="flex justify-end">
+                <div
+                  className={
+                    project.onGoing ? "ongoing-icon tag" : "done-icon tag"
+                  }
+                ></div>
+              </div>
+              <ProjectInitials bgColor={randomColor()}>
+                {project.initials}
+              </ProjectInitials>
+            </DivA>
+            <DivB>
+              {/* Project Details */}
+              <p className="mb-sm">{project.name}</p>
+              <div className="flex gap-sm">
+                {project.stacks.map((stack) => (
+                  <span key={stack}>{iconMapping[stack]}</span>
+                ))}
+              </div>
+            </DivB>
+          </Project>
+        ))}
       </GridContainer>
     </Container>
   );

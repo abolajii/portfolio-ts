@@ -25,7 +25,7 @@ const Container = styled.div`
   }
 
   .ongoing-icon {
-    background-color: #f4a022; /* Orange for On going */
+    background-color: rgb(230, 97, 153); /* Orange for On going */
   }
 
   .icon-title {
@@ -37,7 +37,7 @@ const Container = styled.div`
   }
 
   .ongoing-title {
-    color: #f4a022; /* Orange for On going */
+    color: rgb(230, 97, 153); /* Orange for On going */
   }
 `;
 

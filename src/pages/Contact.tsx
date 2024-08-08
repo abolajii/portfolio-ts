@@ -77,7 +77,11 @@ const Two = styled.div`
   /* background-color: #4caf50; */
 
   .bg {
-    background: linear-gradient(to bottom, #2d2d2d, rgba(76, 175, 80, 0.06));
+    background: linear-gradient(
+      to bottom,
+      rgba(34, 34, 34, 0.5),
+      rgba(76, 175, 80, 0.03)
+    );
     border-radius: 20px;
     padding: 20px;
   }
@@ -113,7 +117,7 @@ const InputField = styled.input`
   font-size: 14px;
   outline: none;
   &:focus {
-    border-color: rgba(76, 175, 80, 0.5);
+    border-color: rgba(76, 175, 80, 0.8);
   }
 `;
 
@@ -129,7 +133,7 @@ const TextArea = styled.textarea`
   outline: none;
   resize: none;
   &:focus {
-    border-color: rgba(76, 175, 80, 0.5);
+    border-color: rgba(76, 175, 80, 0.8);
   }
 
   &::placeholder {
@@ -148,12 +152,9 @@ const IconInputContainer = styled.div`
   color: #ccc;
   font-size: 14px;
   outline: none;
-  &:focus-within {
-    border-color: rgba(76, 175, 80, 0.5);
-  }
 
   &:focus-within {
-    border-color: rgba(76, 175, 80, 0.5);
+    border-color: rgba(76, 175, 80, 0.8);
   }
 `;
 
@@ -194,8 +195,8 @@ const InputAndSelectRow = styled.div`
   color: #ccc;
   font-size: 14px;
   outline: none;
-  &:focus {
-    border-color: rgba(76, 175, 80, 0.5);
+  &:focus-within {
+    border-color: rgba(76, 175, 80, 0.8);
   }
 
   input {

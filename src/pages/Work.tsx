@@ -95,7 +95,7 @@ const Work = () => {
         </div>
         <div className="flex align-center mt-sm">
           <div className="icon ongoing-icon" />
-          <p className="icon-title ongoing-title">On going</p>
+          <p className="icon-title ongoing-title">Ongoing</p>
         </div>
       </div>
     </Container>

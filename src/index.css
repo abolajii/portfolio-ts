@@ -144,6 +144,10 @@ img {
   flex: 3;
 }
 
+.gap-sm {
+  gap: 10px;
+}
+
 /* Grid Utility Classes */
 .grid {
   display: grid;

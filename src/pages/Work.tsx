@@ -1,5 +1,4 @@
 import { MdWorkHistory } from "react-icons/md";
-// import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -12,6 +11,33 @@ const Container = styled.div`
   .project {
     padding-top: 10px;
     line-height: 1.4;
+  }
+
+  .icon {
+    height: 4px;
+    width: 10px;
+    border-radius: 1px;
+    margin-right: 5px;
+  }
+
+  .done-icon {
+    background-color: #4caf50; /* Green for Done */
+  }
+
+  .ongoing-icon {
+    background-color: #f4a022; /* Orange for On going */
+  }
+
+  .icon-title {
+    font-size: 12px;
+  }
+
+  .done-title {
+    color: #4caf50; /* Green for Done */
+  }
+
+  .ongoing-title {
+    color: #f4a022; /* Orange for On going */
   }
 `;
 
@@ -30,82 +56,28 @@ const Line = styled.div`
   margin-top: 5px;
 `;
 
-// const Filter = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 30px;
-//   width: 30px;
-//   background: linear-gradient(to left, #2d2d2d, #7e967f);
-//   cursor: pointer;
-//   margin-right: 10px;
-
-//   &:hover {
-//     background-color: rgba(192, 227, 192, 0.1);
-//   }
-
-//   &:active {
-//     transform: scale(1.04);
-//   }
-// `;
-
-// const FilterContent = styled.div<{ isVisible: boolean }>`
-//   max-height: ${(props) => (props.isVisible ? "400px" : "0")};
-//   height: 20px;
-//   overflow: hidden;
-//   transition: max-height 0.3s ease-in-out;
-// `;
-
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid rgba(0, 255, 0, 0.07); */
   height: 30px;
   width: 30px;
   background: linear-gradient(to right, #2d2d2d, #7e967f);
-  /* border-radius: 50%; */
 `;
 
 const Work = () => {
-  //   const [isFilterContentVisible, setIsFilterContentVisible] =
-  //     React.useState(false);
-
-  //   const toggleFilterContent = () => {
-  //     setIsFilterContentVisible((prev) => !prev);
-  //   };
-
   return (
     <Container>
       <div className="flex">
         <div className="mr-md">
-          <Heading>my projects</Heading>
+          <Heading>My Projects</Heading>
           <Line />
         </div>
         <IconContainer className="flex center">
           <MdWorkHistory size={22} color="#ffffff" />
         </IconContainer>
       </div>
-      {/* <div className="flex">
-        <div className="mr-md flex-1">
-          <Heading>Projects</Heading>
-          <Line />
-        </div>
-        {/* <div className="flex">
-          <Filter onClick={toggleFilterContent}>
-            <MdFilterList color="#fff" size={20} />
-          </Filter>
-          <FilterContent
-            isVisible={isFilterContentVisible}
-            className="flex align-center"
-          >
-            <Checkbox color="#f44336" label="All" />
-            <Checkbox color="#ff9800" label="Done" />
-            <Checkbox color="#4caf50" label="On going" />
-          </FilterContent>
-        </div> 
-      </div> 
-      */}
+
       <div>
         <div className="flex">
           <p className="project">
@@ -114,6 +86,16 @@ const Work = () => {
             frontend interfaces to backend databases, highlighting my diverse
             skill set and commitment to quality.
           </p>
+        </div>
+      </div>
+      <div className="flex gap-sm">
+        <div className="flex align-center mt-sm">
+          <div className="icon done-icon" />
+          <p className="icon-title done-title">Done</p>
+        </div>
+        <div className="flex align-center mt-sm">
+          <div className="icon ongoing-icon" />
+          <p className="icon-title ongoing-title">On going</p>
         </div>
       </div>
     </Container>

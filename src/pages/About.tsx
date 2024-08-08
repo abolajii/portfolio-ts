@@ -6,7 +6,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 
 const Container = styled.div`
   background: linear-gradient(to bottom, #2d2d2d, #222222) !important;
-  padding: 40px 30px;
+  padding: 40px 30px 20px;
 
   color: rgb(204, 204, 204);
 `;

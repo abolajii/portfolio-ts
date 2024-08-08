@@ -38,7 +38,6 @@ const Container = styled.div`
   background-color: #222222;
   color: rgb(204, 204, 204);
   padding: 20px 30px;
-  min-height: 300px;
   background: linear-gradient(to top, #2d2d2d, #222222) !important;
 
   .name {

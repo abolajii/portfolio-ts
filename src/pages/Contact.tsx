@@ -29,7 +29,7 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    padding: 120px 3px;
+    padding: 20px 3px;
     .mobile {
       flex-direction: column;
     }

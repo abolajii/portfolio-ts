@@ -1,8 +1,7 @@
+import { FaGithub, FaTwitter } from "react-icons/fa";
 import { MdContactPage, MdEmail } from "react-icons/md";
 
-import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
-import { FaTwitter } from "react-icons/fa";
 // Home.tsx
 import React from "react";
 import styled from "styled-components";
@@ -410,7 +409,7 @@ const Contact = () => {
             </a>
 
             <a
-              href="https://twitter.com/al_ameen_"
+              href="https://x.com/al_ameen_"
               target="_blank"
               rel="noopener noreferrer"
             >

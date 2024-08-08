@@ -1,6 +1,6 @@
+import { FaGithub, FaTwitter } from "react-icons/fa";
 import styled, { keyframes } from "styled-components";
 
-import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 // Home.tsx
 import React from "react";
@@ -46,6 +46,16 @@ const bounce = keyframes`
 const moveRight = keyframes`
   0% {
     transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
+const moveTwiiterRight = keyframes`
+  0% {
+    transform: translateX(-80px);
     opacity: 0;
   }
   100% {
@@ -167,6 +177,10 @@ const MoveRight = styled.div`
   }
 `;
 
+const TwitterMoveRight = styled(MoveRight)`
+  animation: ${moveTwiiterRight} 1s ease-out;
+`;
+
 const Image = styled.div<{ isMobile: boolean }>`
   height: 300px;
   width: 300px;
@@ -224,11 +238,32 @@ const Home: React.FC = () => {
         </div>
         <div className="links flex gap">
           <IconLink className="cursor center">
-            <FaGithub size={23} color="rgb(76, 175, 80)" />
+            <a
+              href="https://github.com/abolajii"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub size={23} color="rgb(76, 175, 80)" />
+            </a>
           </IconLink>
           <MoveRight className="cursor center">
-            <FaLinkedin size={23} color="rgb(76, 175, 80)" />
+            <a
+              href="https://www.linkedin.com/in/abolaji-ade-ajayi-063b051b9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin size={23} color="rgb(76, 175, 80)" />
+            </a>
           </MoveRight>
+          <TwitterMoveRight className="cursor center">
+            <a
+              href="https://x.com/al_ameen_"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter size={23} color="rgb(76, 175, 80)" />
+            </a>
+          </TwitterMoveRight>
         </div>
       </div>
 

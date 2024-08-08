@@ -10,6 +10,7 @@ const MainContainer = styled.div<{ isOpen: boolean }>`
   flex-grow: 1;
   overflow-y: auto;
   transition: margin-left 0.3s;
+  /* max-height: 100vh; */
 
   &.mobile {
     margin-left: 0;

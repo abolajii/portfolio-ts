@@ -355,3 +355,16 @@ img {
 .rounded-lg {
   border-radius: var(--radius-lg);
 }
+
+@media screen and (max-width: 768px) {
+  html {
+    /* overflow: hidden !important; */
+    overscroll-behavior: none !important;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 15px !important;
+  }
+}

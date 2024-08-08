@@ -81,7 +81,7 @@ const Project = styled.div`
   color: rgb(204, 204, 204);
   overflow: hidden;
   background: linear-gradient(to top, #2d2d2d, #222222) !important;
-  border: 1px solid rgba(0, 255, 0, 0.05);
+  border: 1px solid rgba(0, 255, 0, 0.01);
 `;
 
 const DivA = styled.div`

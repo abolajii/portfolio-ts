@@ -2,7 +2,6 @@ import styled, { keyframes } from "styled-components";
 
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
-import Main from "../components/Main";
 // Home.tsx
 import React from "react";
 import avi from "../assets/avi.jpeg";

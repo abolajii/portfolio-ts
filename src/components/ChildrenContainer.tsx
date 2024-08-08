@@ -1,4 +1,5 @@
 import About from "../pages/About";
+import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 // ChildrenContainer.tsx
 import React from "react";
@@ -15,6 +16,7 @@ const ChildrenContainer: React.FC = () => {
       <About />
       <SkillSet />
       <Work />
+      <Contact />
     </Container>
   );
 };

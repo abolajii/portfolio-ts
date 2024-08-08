@@ -38,7 +38,6 @@ const Container = styled.div`
   background-color: #222222;
   color: rgb(204, 204, 204);
   padding: 20px 30px;
-  padding-bottom: 90px;
   min-height: 300px;
   background: linear-gradient(to top, #2d2d2d, #222222) !important;
 
@@ -115,7 +114,12 @@ const Project = styled.div`
   background-color: #2d2d2d;
   color: rgb(204, 204, 204);
   overflow: hidden;
-  background: linear-gradient(to top, #2d2d2d, #222222) !important;
+  background: linear-gradient(
+    to bottom,
+    #2d2d2d,
+    rgba(76, 175, 80, 0.05)
+  ) !important;
+
   border: 1px solid rgba(0, 255, 0, 0.03);
 `;
 

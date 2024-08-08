@@ -1,9 +1,8 @@
+import { MdContactPage, MdWorkHistory } from "react-icons/md";
 import { RiMenu2Fill, RiMenu3Fill } from "react-icons/ri";
 
 import { FaUserTie } from "react-icons/fa";
 import { IoIosHome } from "react-icons/io";
-import { MdContactPage } from "react-icons/md";
-import { MdWorkHistory } from "react-icons/md";
 // Sidebar.tsx
 import React from "react";
 import styled from "styled-components";
@@ -41,7 +40,9 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
   color: ${(props) => (props.isActive ? "#4caf50" : "rgba(0, 255, 0, 0.3)")};
 
   background: ${(props) =>
-    props.isActive ? "rgba(66, 107, 105, 0.20)" : "transparent"};
+    props.isActive
+      ? "linear-gradient( to top, #2d2d2d, rgba(76, 175, 80, 0.2))"
+      : "transparent"};
   margin-top: 5px;
 
   & > span {

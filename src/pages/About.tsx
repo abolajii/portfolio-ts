@@ -1,5 +1,5 @@
 // import React from 'react'
-
+import { FaUserTie } from "react-icons/fa6";
 import Profile from "./Profile";
 import styled from "styled-components";
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -7,7 +7,6 @@ import useMediaQuery from "../hooks/useMediaQuery";
 const Container = styled.div`
   background: linear-gradient(to bottom, #2d2d2d, #222222) !important;
   padding: 40px 30px 20px;
-
   color: rgb(204, 204, 204);
 `;
 
@@ -18,7 +17,6 @@ const Paragraph = styled.p`
 `;
 
 const Heading = styled.h2`
-  /* color: #4caf50; */
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
@@ -33,17 +31,31 @@ const Line = styled.div`
   margin-top: 5px;
 `;
 
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid rgba(0, 255, 0, 0.07); */
+  height: 30px;
+  width: 30px;
+  background: linear-gradient(to left, #2d2d2d, #7e967f);
+  /* border-radius: 50%; */
+`;
+
 const About = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  //   if (isMobile) {
-  //     return <Container>About Mobile</Container>;
-  //   }
-
   return (
     <Container>
-      <Heading>About Abolaji</Heading>
-      <Line />
+      <div className="flex">
+        <div className="mr-md">
+          <Heading>About Abolaji</Heading>
+          <Line />
+        </div>
+        <IconContainer className="flex center">
+          <FaUserTie size={20} color="#ffffff" />
+        </IconContainer>
+      </div>
       <div className="flex">
         <div className="flex-1">
           <Paragraph>

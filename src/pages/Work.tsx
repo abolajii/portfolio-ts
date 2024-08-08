@@ -114,7 +114,7 @@ const Project = styled.div`
   color: rgb(204, 204, 204);
   overflow: hidden;
   background-color: #222;
-  border: 1px solid rgba(0, 255, 0, 0.03);
+  border: 1px solid rgba(0, 255, 0, 0.09);
 `;
 
 const DivA = styled.div`

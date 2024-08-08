@@ -17,7 +17,6 @@ const Container = styled.div`
   .tag {
     width: 70px;
     height: 3px;
-    border-radius: 4px;
   }
 
   .icon {
@@ -76,7 +75,7 @@ const Project = styled.div`
   display: grid;
   grid-template-rows: minmax(200px, 2fr) minmax(100px, 1fr); /* 2/3 for image, 1/3 for details */
   height: 100%;
-  border-radius: 9px;
+  /* border-radius: 9px; */
   background-color: #2d2d2d;
   color: rgb(204, 204, 204);
   overflow: hidden;

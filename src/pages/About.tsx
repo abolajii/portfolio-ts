@@ -1,7 +1,6 @@
 // import React from 'react'
 
 import styled from "styled-components";
-import useMediaQuery from "../hooks/useMediaQuery";
 
 const Container = styled.div`
   background: linear-gradient(to bottom, #2d2d2d, #222222) !important;

@@ -1,7 +1,6 @@
-// import React from "react";
+import { MdContactPage, MdEmail } from "react-icons/md";
 
-import { MdContactPage } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -213,6 +212,8 @@ const Button = styled.button`
   }
 `;
 
+// Styled-components definitions...
+
 const CheckboxContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -234,6 +235,10 @@ const CheckboxLabel = styled.label<{ color: string }>`
     border-radius: 3px;
     background-color: transparent;
     cursor: pointer;
+
+    &:checked {
+      background-color: ${(props) => props.color};
+    }
   }
 
   span {
@@ -242,11 +247,56 @@ const CheckboxLabel = styled.label<{ color: string }>`
 `;
 
 const Contact = () => {
+  // State for the entire form
+  const [formData, setFormData] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
+    checkboxes: {
+      frontend: false,
+      backend: false,
+      mobile: false,
+      fullstack: false,
+    },
+  });
+
+  // Handle input changes
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Handle checkbox changes
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    setFormData({
+      ...formData,
+      checkboxes: {
+        ...formData.checkboxes,
+        [name]: checked,
+      },
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("Form data submitted:", formData);
+    // Add your form submission logic here (e.g., send the data to a server)
+  };
+
   return (
     <Container>
       <div className="flex justify-between mobile">
         <One>
-          {/* <div className="flex">
+          <div className="flex">
             <div className="mr-md">
               <Heading>CONTACT ME</Heading>
               <Line />
@@ -254,60 +304,113 @@ const Contact = () => {
             <IconContainer className="flex center">
               <MdContactPage size={20} color="#ffffff" />
             </IconContainer>
-          </div> */}
+          </div>
         </One>
         <Two>
           <div className="bg">
             <Heading>Get in Touch</Heading>
             <p className="small">You can reach me anytime</p>
-            <FormContainer>
-              <InputRow>
-                <InputField type="text" placeholder="First Name" />
-                <InputField type="text" placeholder="Last Name" />
-              </InputRow>
+            <form onSubmit={handleSubmit}>
+              <FormContainer>
+                <InputRow>
+                  <InputField
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                  />
+                  <InputField
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                  />
+                </InputRow>
 
-              <IconInputContainer>
-                <MdEmail size={20} />
-                <InputWithIcon type="email" placeholder="Email" />
-              </IconInputContainer>
+                <IconInputContainer>
+                  <MdEmail size={20} />
+                  <InputWithIcon
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                  />
+                </IconInputContainer>
 
-              <InputAndSelectRow className="flex ai-center">
-                <div>
-                  <Select>
-                    <option value="+1">+1 (US)</option>
-                    <option value="+44">+44 (UK)</option>
-                    <option value="+91">+91 (India)</option>
-                  </Select>
-                </div>
-                <Separator>|</Separator>
-                <div className="flex flex-1">
-                  <input placeholder="Phone number" />
-                </div>
-              </InputAndSelectRow>
+                <InputAndSelectRow className="flex ai-center">
+                  <div>
+                    <Select name="countryCode" defaultValue="+1">
+                      <option value="+1">+1 (US)</option>
+                      <option value="+44">+44 (UK)</option>
+                      <option value="+91">+91 (India)</option>
+                    </Select>
+                  </div>
+                  <Separator>|</Separator>
+                  <div className="flex flex-1">
+                    <input
+                      type="text"
+                      name="phoneNumber"
+                      placeholder="Phone number"
+                      value={formData.phoneNumber}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </InputAndSelectRow>
 
-              <TextArea rows={5} placeholder="Your Message"></TextArea>
+                <TextArea
+                  rows={5}
+                  name="message"
+                  placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                ></TextArea>
 
-              <p>How can I help?</p>
-              <CheckboxContainer>
-                <CheckboxLabel color="#4caf50">
-                  <input type="checkbox" value="frontend" />
-                  <span>Frontend</span>
-                </CheckboxLabel>
-                <CheckboxLabel color="#2196f3">
-                  <input type="checkbox" value="backend" />
-                  <span>Backend</span>
-                </CheckboxLabel>
-                <CheckboxLabel color="#ff5722">
-                  <input type="checkbox" value="mobile" />
-                  <span>Mobile Development</span>
-                </CheckboxLabel>
-                <CheckboxLabel color="#9c27b0">
-                  <input type="checkbox" value="fullstack" />
-                  <span>Fullstack</span>
-                </CheckboxLabel>
-              </CheckboxContainer>
-              <Button>Let's get started!</Button>
-            </FormContainer>
+                <p>How can I help?</p>
+                <CheckboxContainer>
+                  <CheckboxLabel color="#4caf50">
+                    <input
+                      type="checkbox"
+                      name="frontend"
+                      checked={formData.checkboxes.frontend}
+                      onChange={handleCheckboxChange}
+                    />
+                    <span>Frontend</span>
+                  </CheckboxLabel>
+                  <CheckboxLabel color="#2196f3">
+                    <input
+                      type="checkbox"
+                      name="backend"
+                      checked={formData.checkboxes.backend}
+                      onChange={handleCheckboxChange}
+                    />
+                    <span>Backend</span>
+                  </CheckboxLabel>
+                  <CheckboxLabel color="#ff5722">
+                    <input
+                      type="checkbox"
+                      name="mobile"
+                      checked={formData.checkboxes.mobile}
+                      onChange={handleCheckboxChange}
+                    />
+                    <span>Mobile Development</span>
+                  </CheckboxLabel>
+                  <CheckboxLabel color="#9c27b0">
+                    <input
+                      type="checkbox"
+                      name="fullstack"
+                      checked={formData.checkboxes.fullstack}
+                      onChange={handleCheckboxChange}
+                    />
+                    <span>Fullstack</span>
+                  </CheckboxLabel>
+                </CheckboxContainer>
+
+                <Button type="submit">Let's get started!</Button>
+              </FormContainer>
+            </form>
           </div>
         </Two>
       </div>

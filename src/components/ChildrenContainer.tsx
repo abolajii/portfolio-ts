@@ -1,4 +1,5 @@
 import About from "../pages/About";
+import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 import React from "react";
 import Work from "../pages/Work";
@@ -55,7 +56,7 @@ const ChildrenContainer: React.FC<ChildrenProp> = ({
         <Work />
       </div>
       <div ref={(el) => (sectionsRefs.current[4] = el)}>
-        <Work />
+        <Contact />
       </div>
     </>
   );

@@ -11,7 +11,7 @@ const Inner = styled.div`
   background-color: #222222;
   color: rgb(204, 204, 204);
   padding: 20px 30px;
-  padding-bottom: 80px;
+  padding-bottom: 50px;
 `;
 
 const SkillSet = () => {

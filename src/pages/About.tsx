@@ -18,17 +18,19 @@ const Paragraph = styled.p`
 `;
 
 const Heading = styled.h2`
-  color: #4caf50;
+  /* color: #4caf50; */
   font-size: 24px;
   font-weight: bold;
+  text-transform: uppercase;
 `;
 
 const Line = styled.div`
-  background: linear-gradient(to left, #2d2d2d, #4caf50);
-  height: 3px;
-  width: 80px;
+  background: linear-gradient(to right, #2d2d2d, #4caf50);
+  height: 4px;
+  width: 194px;
   border-radius: 1px;
   margin-bottom: 30px;
+  margin-top: 5px;
 `;
 
 const About = () => {
@@ -40,7 +42,7 @@ const About = () => {
 
   return (
     <Container>
-      <Heading>About Me</Heading>
+      <Heading>About Abolaji</Heading>
       <Line />
       <div className="flex">
         <div className="flex-1">

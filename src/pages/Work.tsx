@@ -76,9 +76,12 @@ const Project = styled.div`
   display: grid;
   grid-template-rows: minmax(200px, 2fr) minmax(100px, 1fr); /* 2/3 for image, 1/3 for details */
   height: 100%;
-  border-radius: 3px;
+  border-radius: 9px;
   background-color: #2d2d2d;
   color: rgb(204, 204, 204);
+  overflow: hidden;
+  background: linear-gradient(to top, #2d2d2d, #222222) !important;
+  border: 1px solid rgba(0, 255, 0, 0.05);
 `;
 
 const DivA = styled.div`

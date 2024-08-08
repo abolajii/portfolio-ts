@@ -25,6 +25,10 @@ const Container = styled.div`
     margin-bottom: -8px;
   }
 
+  #email {
+    margin-bottom: 30px;
+  }
+
   @media screen and (max-width: 768px) {
     padding: 120px 3px;
     .mobile {
@@ -256,7 +260,7 @@ const CheckboxLabel = styled.label<{ color: string }>`
 
 const SocialIcons = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 30px;
   margin-top: 40px;
   margin-bottom: 30px;
 
@@ -264,8 +268,16 @@ const SocialIcons = styled.div`
     color: #ccc;
     transition: color 0.3s ease;
 
-    &:hover {
-      color: #4caf50;
+    & {
+      color: #bdbdbd; /* GitHub */
+    }
+
+    &:nth-child(2) {
+      color: #0077b5; /* LinkedIn */
+    }
+
+    &:nth-child(3) {
+      color: #1da1f2; /* Twitter */
     }
   }
 `;
@@ -356,7 +368,7 @@ const Contact = () => {
             and dynamic web applications. Feel free to reach out for any
             inquiries or collaboration opportunities!
           </Introduction>
-          <p>Email: inquries@adeajayiabolaji.com</p>
+          <p id="email">Email: inquries@adeajayiabolaji.com</p>
 
           <Quote>
             "Abolaji is a remarkable developer with a deep understanding of both
@@ -383,21 +395,22 @@ const Contact = () => {
 
           <SocialIcons>
             <a
-              href="https://www.linkedin.com/in/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin size={24} />
-            </a>
-            <a
-              href="https://github.com/yourusername"
+              href="https://github.com/abolajii"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaGithub size={24} />
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://www.linkedin.com/in/abolaji-ade-ajayi-063b051b9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin size={24} />
+            </a>
+
+            <a
+              href="https://twitter.com/al_ameen_"
               target="_blank"
               rel="noopener noreferrer"
             >

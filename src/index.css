@@ -47,6 +47,12 @@ button {
   font-family: inherit;
 }
 
+input,
+textarea,
+select {
+  font-size: 15px !important;
+}
+
 img {
   max-width: 100%;
   height: auto;

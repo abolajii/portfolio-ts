@@ -296,7 +296,7 @@ const Contact = () => {
     <Container>
       <div className="flex justify-between mobile">
         <One>
-          <div className="flex">
+          {/* <div className="flex">
             <div className="mr-md">
               <Heading>CONTACT ME</Heading>
               <Line />
@@ -304,7 +304,7 @@ const Contact = () => {
             <IconContainer className="flex center">
               <MdContactPage size={20} color="#ffffff" />
             </IconContainer>
-          </div>
+          </div> */}
         </One>
         <Two>
           <div className="bg">

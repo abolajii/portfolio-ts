@@ -22,7 +22,8 @@ const SidebarContainer = styled.div<{ isOpen?: boolean }>`
   color: white;
   display: flex;
   flex-direction: column;
-  background-color: #2d2d2d;
+
+  background: linear-gradient(to bottom, #222222, rgba(76, 175, 80, 0.02));
 `;
 
 const HamBurgerContainer = styled.div`
@@ -37,11 +38,12 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
-  color: ${(props) => (props.isActive ? "#4caf50" : "rgba(0, 255, 0, 0.3)")};
+  color: ${(props) =>
+    props.isActive ? "rgb(76, 175, 80)" : "rgba(0, 255, 0, 0.3)"};
 
   background: ${(props) =>
     props.isActive
-      ? "linear-gradient( to top, #2d2d2d, rgba(76, 175, 80, 0.2))"
+      ? "linear-gradient( to top, #2d2d2d, rgba(76, 175, 80, 0.1))"
       : "transparent"};
   margin-top: 5px;
 
@@ -64,8 +66,9 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
 `;
 
 const Mobile = styled.div`
-  background-color: #2d2d2d;
-  border-top: 1px solid rgba(0, 255, 0, 0.07);
+  /* background: linear-gradient(to top, #222222, rgba(76, 175, 80, 0.02)); */
+  background: rgba(34, 34, 34, 0.97);
+  border-top: 1px solid rgba(0, 255, 0, 0.09);
   position: fixed;
   bottom: 0;
   width: 100%;

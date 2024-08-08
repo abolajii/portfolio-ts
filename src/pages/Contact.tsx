@@ -1,5 +1,9 @@
 import { MdContactPage, MdEmail } from "react-icons/md";
 
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
+// Home.tsx
 import React from "react";
 import styled from "styled-components";
 
@@ -15,6 +19,10 @@ const Container = styled.div`
     color: rgb(204, 204, 204);
     font-size: 15px;
     margin-bottom: 30px;
+  }
+
+  .help {
+    margin-bottom: -8px;
   }
 
   @media screen and (max-width: 768px) {
@@ -33,11 +41,11 @@ const Heading = styled.h2`
 `;
 
 const Line = styled.div`
-  background: linear-gradient(to right, #2d2d2d, #4caf50);
+  background: linear-gradient(to left, #2d2d2d, #4caf50);
   height: 4px;
   width: 150px;
   border-radius: 1px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 5px;
 `;
 
@@ -54,7 +62,6 @@ const IconContainer = styled.div`
 
 const One = styled.div`
   flex: 1.7;
-  padding: 40px 30px;
 
   @media screen and (max-width: 768px) {
     padding: 20px 30px;
@@ -205,6 +212,8 @@ const Button = styled.button`
   color: #fff;
   border: none;
   border-radius: 4px;
+  margin: 20px 0 40px;
+
   cursor: pointer;
   font-size: 16px;
   &:hover {
@@ -243,6 +252,44 @@ const CheckboxLabel = styled.label<{ color: string }>`
 
   span {
     color: #ccc;
+  }
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+
+  a {
+    color: #ccc;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #4caf50;
+    }
+  }
+`;
+
+const Introduction = styled.p`
+  margin: 15px 0;
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.4;
+`;
+
+const Quote = styled.blockquote`
+  margin: 20px 0;
+  font-style: italic;
+  color: #ccc;
+  border-left: 2px solid #4caf50;
+  padding-left: 15px;
+
+  cite {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #888;
   }
 `;
 
@@ -296,7 +343,7 @@ const Contact = () => {
     <Container>
       <div className="flex justify-between mobile">
         <One>
-          {/* <div className="flex">
+          <div className="flex">
             <div className="mr-md">
               <Heading>CONTACT ME</Heading>
               <Line />
@@ -304,7 +351,60 @@ const Contact = () => {
             <IconContainer className="flex center">
               <MdContactPage size={20} color="#ffffff" />
             </IconContainer>
-          </div> */}
+          </div>
+          <Introduction>
+            I'm a full-stack developer with a passion for building responsive
+            and dynamic web applications. Feel free to reach out for any
+            inquiries or collaboration opportunities!
+          </Introduction>
+          <p>Email: inquries@adeajayiabolaji.com</p>
+
+          <Quote>
+            "Abolaji is a remarkable developer with a deep understanding of both
+            frontend and backend technologies. His solutions are always
+            innovative and effective."
+            <cite>— Adebayo Akande</cite>
+          </Quote>
+          <Quote>
+            "Working with Abolaji was an absolute pleasure. His expertise and
+            professionalism are top-notch!"
+            <cite>— Yazid Musa</cite>
+          </Quote>
+          <Quote>
+            "Collaborating with Abolaji has been one of the most rewarding
+            experiences. His passion and skill set make him a valuable asset to
+            any team."
+            <cite>— Innocent Oko</cite>
+          </Quote>
+          <Quote>
+            "Abolaji’s attention to detail and dedication to his work is
+            unparalleled. He consistently delivers beyond expectations."
+            <cite>— Kayode Adeyemi</cite>
+          </Quote>
+
+          <SocialIcons>
+            <a
+              href="https://www.linkedin.com/in/yourprofile"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://twitter.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter size={24} />
+            </a>
+          </SocialIcons>
         </One>
         <Two>
           <div className="bg">
@@ -368,7 +468,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                 ></TextArea>
 
-                <p>How can I help?</p>
+                <p className="help">How can I help?</p>
                 <CheckboxContainer>
                   <CheckboxLabel color="#4caf50">
                     <input

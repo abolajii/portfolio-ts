@@ -63,7 +63,7 @@ const IconContainer = styled.div`
   /* border: 1px solid rgba(0, 255, 0, 0.07); */
   height: 30px;
   width: 30px;
-  background: linear-gradient(to left, #2d2d2d, #7e967f);
+  background: linear-gradient(to right, #2d2d2d, #7e967f);
   /* border-radius: 50%; */
 `;
 
@@ -83,7 +83,7 @@ const Work = () => {
           <Line />
         </div>
         <IconContainer className="flex center">
-          <MdWorkHistory size={20} color="#ffffff" />
+          <MdWorkHistory size={22} color="#ffffff" />
         </IconContainer>
       </div>
       {/* <div className="flex">

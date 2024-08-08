@@ -36,7 +36,6 @@ const Container = styled.div`
 const Heading = styled.h2`
   font-size: 23px;
   font-weight: bold;
-  color: #4caf50;
   margin-bottom: 8px;
 `;
 

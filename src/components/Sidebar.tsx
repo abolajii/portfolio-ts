@@ -67,7 +67,7 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
 
 const Mobile = styled.div`
   /* background: linear-gradient(to top, #222222, rgba(76, 175, 80, 0.02)); */
-  background: rgba(34, 34, 34, 0.97);
+  background: rgba(34, 34, 34, 1);
   border-top: 1px solid rgba(0, 255, 0, 0.09);
   position: fixed;
   bottom: 0;

@@ -28,6 +28,7 @@ type ProjectType = {
   id: number;
   onGoing?: boolean;
   name: string;
+  bg: string;
   stacks: Array<keyof typeof iconMapping>;
   initials: string;
 };
@@ -40,6 +41,10 @@ const Container = styled.div`
   padding-bottom: 90px;
   min-height: 300px;
   background: linear-gradient(to top, #2d2d2d, #222222) !important;
+
+  .name {
+    font-size: 14px;
+  }
 
   .project {
     padding-top: 10px;
@@ -111,7 +116,7 @@ const Project = styled.div`
   color: rgb(204, 204, 204);
   overflow: hidden;
   background: linear-gradient(to top, #2d2d2d, #222222) !important;
-  border: 1px solid rgba(0, 255, 0, 0.01);
+  border: 1px solid rgba(0, 255, 0, 0.03);
 `;
 
 const DivA = styled.div`
@@ -125,7 +130,7 @@ const DivB = styled.div`
   padding: 10px;
   color: white;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 `;
 
 const GridContainer = styled.div`
@@ -136,36 +141,48 @@ const GridContainer = styled.div`
 `;
 
 const ProjectInitials = styled.div<{ bgColor: string }>`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 20px;
-  height: 20px;
+  width: 60px;
+  height: 60px;
   background-color: ${(props) => props.bgColor};
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 18px;
   border-radius: 50%;
+  border: 1px solid #ccc;
 `;
 
-const randomColor = () =>
-  `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+const ViewProjectButton = styled.button`
+  font-size: 12px;
+  padding: 5px 5px;
+  border-radius: 3px;
+
+  background-color: #4caf50; /* Green background color */
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+`;
 
 const Work = () => {
   const projects: ProjectType[] = [
     {
+      onGoing: true,
       id: 1,
-      onGoing: false,
-      name: "Lovebird Dating Application",
+      name: "Lovebirdz ",
       stacks: ["react", "node", "firebase"],
-      initials: "LD",
+      bg: "#D59C3B",
+      initials: "LB",
     },
     {
       id: 2,
-      onGoing: false,
-      name: "Lovebird Admin Page",
+      bg: "#3b5346",
+      name: "Lovebirdz Admin",
       stacks: ["react", "node", "firebase"],
       initials: "LA",
     },
@@ -174,25 +191,42 @@ const Work = () => {
       onGoing: true,
       name: "Logistics Manager",
       stacks: ["react", "node", "firebase"],
+      bg: "#AF238F",
       initials: "LM",
     },
-    { id: 4, name: "FlatHub", stacks: ["react", "styled"], initials: "FH" },
+    {
+      id: 4,
+      name: "FlatHub",
+      stacks: ["react", "styled"],
+      initials: "FH",
+      bg: "#768BF2",
+    },
     {
       id: 5,
       name: "One Card Nigeria",
       stacks: ["react", "firebase", "redux"],
+      bg: "#4d63df",
       initials: "OC",
     },
     {
       id: 6,
       name: "Afriskaut",
       stacks: ["react", "tailwindcss", "node"],
+      bg: "#313e4e",
       initials: "AF",
     },
-    { id: 7, name: "WestPay", stacks: ["react", "mongodb"], initials: "WP" },
+    {
+      id: 7,
+      name: "WestPay",
+      bg: "#6b23af",
+
+      stacks: ["react", "mongodb"],
+      initials: "WP",
+    },
     {
       id: 8,
       name: "Connect Nigeria",
+      bg: "#C82B0F",
       stacks: ["react", "mysql"],
       initials: "CN",
     },
@@ -235,26 +269,32 @@ const Work = () => {
         {projects.map((project) => (
           <Project key={project.id}>
             <DivA>
-              {/* Project Image or Content */}
               <div className="flex justify-end">
                 <div
                   className={
                     project.onGoing ? "ongoing-icon tag" : "done-icon tag"
                   }
-                ></div>
+                />
               </div>
-              <ProjectInitials bgColor={randomColor()}>
-                {project.initials}
-              </ProjectInitials>
+              <div className="center h-100">
+                <ProjectInitials bgColor={project.bg}>
+                  {project.initials}
+                </ProjectInitials>
+              </div>
             </DivA>
-            <DivB>
-              {/* Project Details */}
-              <p className="mb-sm">{project.name}</p>
-              <div className="flex gap-sm">
-                {project.stacks.map((stack) => (
-                  <span key={stack}>{iconMapping[stack]}</span>
-                ))}
+            <DivB className="flex justify-between align-center">
+              <div className="flex-1">
+                <p className="mb-sm name">{project.name}</p>
+                <div className="flex gap-sm">
+                  {project.stacks.map((stack) => (
+                    <span key={stack}>{iconMapping[stack]}</span>
+                  ))}
+                </div>
               </div>
+              <div>
+                <ViewProjectButton>VIEW PROJECT</ViewProjectButton>
+              </div>
+              {/* Project Details */}
             </DivB>
           </Project>
         ))}

@@ -61,6 +61,10 @@ img {
   padding: 0 var(--spacing-md);
 }
 
+.h-100 {
+  height: 100%;
+}
+
 .center {
   display: flex;
   align-items: center;

@@ -87,7 +87,13 @@ const links = [
   { id: 4, title: "Contact", icon: <MdContactPage /> },
 ];
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<{
+  handleScrollIntoView: (id: number) => void;
+  single?: boolean;
+  setAutoScrollToProjectSection?: (id: boolean) => void;
+}> = ({ handleScrollIntoView, single }) => {
+  // const navigate = useNavigate()
+
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const { isOpen, toggleSidebar } = useSidebar();
   const { activeLink, setActiveLink } = useActiveLink();
@@ -98,12 +104,13 @@ const Sidebar: React.FC = () => {
 
   const handleLinkClick = (id: number) => {
     setActiveLink(id);
-    // if (single) {
-    //   navigate("/");
-    //   setAutoScrollToProjectSection(true);
-    // } else {
-    //   handleScrollIntoView(id);
-    // }
+
+    if (single) {
+      // navigate("/");
+      // setAutoScrollToProjectSection(true);
+    } else {
+      handleScrollIntoView(id);
+    }
   };
 
   if (isMobile) {

@@ -1,6 +1,5 @@
-// import React from 'react'
-
 import ChildrenContainer from "./ChildrenContainer";
+import React from "react";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -21,11 +20,20 @@ const Main: React.FC = () => {
   const { isOpen } = useSidebar();
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
+  const sectionsRefs = React.useRef<(HTMLElement | null)[]>([]);
+
+  const handleScrollIntoView = (id: number) => {
+    const section = sectionsRefs.current[id];
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="flex">
-      <Sidebar />
+      <Sidebar handleScrollIntoView={handleScrollIntoView} />
       <MainContainer isOpen={isOpen} className={`${isMobile && "mobile"}`}>
-        <ChildrenContainer />
+        <ChildrenContainer sectionsRefs={sectionsRefs} />
       </MainContainer>
     </div>
   );

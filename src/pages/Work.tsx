@@ -15,8 +15,8 @@ const Container = styled.div`
   }
 
   .tag {
-    width: 70px;
-    height: 3px;
+    width: 50px;
+    height: 2px;
   }
 
   .icon {

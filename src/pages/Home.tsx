@@ -64,6 +64,10 @@ const Container = styled.div`
   .name {
     color: rgb(76, 175, 80);
   }
+
+  @media screen and (max-width: 768px) {
+    padding-top: 30px;
+  }
 `;
 
 const Tag = styled.div`

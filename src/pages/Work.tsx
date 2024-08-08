@@ -113,12 +113,7 @@ const Project = styled.div`
   background-color: #2d2d2d;
   color: rgb(204, 204, 204);
   overflow: hidden;
-  background: linear-gradient(
-    to bottom,
-    #2d2d2d,
-    rgba(76, 175, 80, 0.05)
-  ) !important;
-
+  background-color: #222;
   border: 1px solid rgba(0, 255, 0, 0.03);
 `;
 
@@ -133,6 +128,11 @@ const DivB = styled.div`
   padding: 10px;
   color: white;
   display: flex;
+  background: linear-gradient(
+    to bottom,
+    #222,
+    rgba(76, 175, 80, 0.04)
+  ) !important;
   /* flex-direction: column; */
 `;
 
@@ -158,7 +158,7 @@ const ProjectInitials = styled.div<{ bgColor: string }>`
 
 const ViewProjectButton = styled.button`
   font-size: 12px;
-  padding: 5px 5px;
+  padding: 9px 5px;
   border-radius: 3px;
 
   background-color: #4caf50; /* Green background color */

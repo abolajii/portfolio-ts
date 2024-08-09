@@ -205,7 +205,10 @@ const Status = styled.div`
   padding: 4px 12px;
   border-radius: 3px;
   font-size: 14px;
+  width: fit-content;
+  color: rgb(204, 204, 204);
 
+  margin-top: 9px;
   @media screen and (max-width: 768px) {
     /* padding: 20px; */
     margin-bottom: 20px;
@@ -240,6 +243,25 @@ const Goback = styled.button`
   }
 `;
 
+const CTAButton = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50; /* Green background color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  &:active {
+    background-color: #367935; /* Even darker green on click */
+  }
+`;
+
 const Single = () => {
   const { id } = useParams<{ id: string }>();
   const { setActiveLink } = useActiveLink();
@@ -252,6 +274,7 @@ const Single = () => {
   return (
     <Container>
       <Goback
+        className="center"
         onClick={() => {
           navigate("/");
           setActiveLink(3);
@@ -260,7 +283,7 @@ const Single = () => {
       >
         <FaAngleLeft color="rgb(204, 204, 204)" size={18} />
       </Goback>
-      <div className="flex top align-center justify-between">
+      <div className="top">
         <h2>{project?.name}</h2>
         <div className="mr-lg">
           {project?.onGoing ? (
@@ -272,6 +295,11 @@ const Single = () => {
       </div>
       {/* PROJECT DETAILS */}
       <ProjectDetails />
+      <CTAButton>
+        <a target="_blank" rel="noreferrer">
+          VIEW SITE
+        </a>
+      </CTAButton>
       {/* PROJECT DETAILS */}
       {project?.onGoing && <Workflow />}
     </Container>

@@ -357,9 +357,10 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  /* disable scroll for mobile */
   html {
     /* overflow: hidden !important; */
-    overscroll-behavior: none !important;
+    /* overscroll-behavior: none !important; */
   }
 
   input,

@@ -10,6 +10,8 @@ import {
 import { GrMysql } from "react-icons/gr";
 import { MdWorkHistory } from "react-icons/md";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useSidebar } from "../store/useSidebar";
 
 const iconMapping: Record<string, JSX.Element> = {
   react: <FaReact size={20} color="#61dafb" />,
@@ -133,7 +135,10 @@ const DivB = styled.div`
     #222,
     rgba(76, 175, 80, 0.04)
   ) !important;
-  /* flex-direction: column; */
+  /* import { useNavigate } from 'react-router-dom';
+flex-import { useNavigate } from 'react-router-dom';
+direcimport { useNavigate } from 'react-router-dom';
+tion: column; */
 `;
 
 const GridContainer = styled.div`
@@ -235,6 +240,10 @@ const Work = () => {
     },
   ];
 
+  const { setAutoScroll } = useSidebar();
+
+  const navigate = useNavigate();
+
   return (
     <Container>
       <div className="flex">
@@ -270,7 +279,13 @@ const Work = () => {
 
       <GridContainer>
         {projects.map((project) => (
-          <Project key={project.id}>
+          <Project
+            key={project.id}
+            onClick={() => {
+              navigate("/project/" + project.id);
+              setAutoScroll(true);
+            }}
+          >
             <DivA>
               <div className="flex justify-end">
                 <div

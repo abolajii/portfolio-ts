@@ -6,16 +6,12 @@ import Work from "../pages/Work";
 import { useActiveLink } from "../store/useActiveLink";
 
 interface ChildrenProp {
-  children?: React.ReactNode;
   sectionsRefs: React.MutableRefObject<(HTMLElement | null)[]>;
 }
 
-const ChildrenContainer: React.FC<ChildrenProp> = ({
-  children,
-  sectionsRefs,
-}) => {
+const ChildrenContainer: React.FC<ChildrenProp> = ({ sectionsRefs }) => {
   const { setActiveLink } = useActiveLink();
-
+  // but the scroll doesnt make where i am active,, but when i remove the added height, it was normal, so how can i add height and make the active link active on the page i am , or cant it be acheived
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -41,9 +37,6 @@ const ChildrenContainer: React.FC<ChildrenProp> = ({
     };
   }, [sectionsRefs, setActiveLink]);
 
-  if (children) {
-    return <>{children}</>;
-  }
   return (
     <>
       <div ref={(el) => (sectionsRefs.current[1] = el)}>

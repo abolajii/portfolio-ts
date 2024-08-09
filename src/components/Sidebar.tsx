@@ -8,6 +8,7 @@ import React from "react";
 import styled from "styled-components";
 import { useActiveLink } from "../store/useActiveLink";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { useNavigate } from "react-router-dom";
 import { useSidebar } from "../store/useSidebar";
 
 const Container = styled.div``;
@@ -23,7 +24,7 @@ const SidebarContainer = styled.div<{ isOpen?: boolean }>`
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(to bottom, #222222, rgba(76, 175, 80, 0.02));
+  background: linear-gradient(to bottom, #222222, rgba(76, 175, 80, 0.05));
 `;
 
 const HamBurgerContainer = styled.div`
@@ -39,7 +40,7 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
   cursor: pointer;
   transition: all 0.3s;
   color: ${(props) =>
-    props.isActive ? "rgb(76, 175, 80)" : "rgba(0, 255, 0, 0.3)"};
+    props.isActive ? "rgb(76, 175, 80)" : "rgba(0, 255, 0, 0.2)"};
 
   background: ${(props) =>
     props.isActive
@@ -52,6 +53,9 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
     font-size: 15px;
     text-transform: capitalize;
     display: ${(props) => (props.isOpen ? "inline" : "none")};
+    color: ${(props) =>
+      props.isActive ? "rgb(204, 204, 204)" : "rgba(204, 204, 204,.36)"};
+
     opacity: ${(props) => (props.isOpen ? 1 : 0)};
     transform: ${(props) =>
       props.isOpen ? "translateX(0)" : "translateX(-10px)"};
@@ -61,7 +65,15 @@ const SidebarLink = styled.div<{ isActive?: boolean; isOpen?: boolean }>`
   }
 
   &:hover {
-    background: rgba(66, 107, 105, 0.15);
+    background: linear-gradient(to top, #2d2d2d, rgba(76, 175, 80, 0.1));
+    color: rgb(76, 175, 80);
+
+    & > span {
+      color: rgb(204, 204, 204);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
   }
 `;
 
@@ -70,10 +82,10 @@ const Mobile = styled.div`
   background: rgba(34, 34, 34, 1);
   border-top: 1px solid rgba(0, 255, 0, 0.09);
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   width: 100%;
   z-index: 99;
-  /* height: 60px; */
+  /* height: 65px; */
 `;
 
 const links = [
@@ -90,24 +102,29 @@ const links = [
 const Sidebar: React.FC<{
   handleScrollIntoView: (id: number) => void;
   single?: boolean;
-  setAutoScrollToProjectSection?: (id: boolean) => void;
+  setAutoScroll?: (id?: boolean) => void;
 }> = ({ handleScrollIntoView, single }) => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  const { isOpen, toggleSidebar } = useSidebar();
+  const { isOpen, toggleSidebar, setAutoScroll } = useSidebar();
   const { activeLink, setActiveLink } = useActiveLink();
 
   const handleOpen = () => {
     toggleSidebar();
   };
 
+  React.useEffect(() => {
+    if (single) {
+      setActiveLink(3);
+    }
+  }, [single, setActiveLink]);
+
   const handleLinkClick = (id: number) => {
     setActiveLink(id);
-
     if (single) {
-      // navigate("/");
-      // setAutoScrollToProjectSection(true);
+      navigate("/");
+      setAutoScroll(true);
     } else {
       handleScrollIntoView(id);
     }

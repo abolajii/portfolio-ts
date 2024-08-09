@@ -56,7 +56,7 @@ const projects: ProjectType[] = [
   {
     id: 1,
     onGoing: true,
-    name: "Lovebird Dating Application",
+    name: "Lovebirdz",
     stacks: ["react", "node", "firebase"],
     link: "https://lovebirdz-app.web.app",
     images: {

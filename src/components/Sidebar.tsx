@@ -15,7 +15,7 @@ const Container = styled.div``;
 
 const SidebarContainer = styled.div<{ isOpen?: boolean }>`
   position: fixed;
-  height: 100vh;
+  min-height: 100vh;
   width: ${(props) => (props.isOpen ? "200px" : "110px")};
   border-right: 1px solid rgba(255, 255, 255, 0.03);
   transition: all 0.3s;

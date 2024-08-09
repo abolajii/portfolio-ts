@@ -8,106 +8,15 @@ import {
 } from "react-icons/si";
 
 import { GrMysql } from "react-icons/gr";
-import { MdWorkHistory } from "react-icons/md";
-// import RelatedClone from "./RelatedClone";
-import bg1 from "../assets/lb1.png";
+// import React from "react";
+import bg1 from "../assets/lb9.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useSidebar } from "../store/useSidebar";
 
-const iconMapping: Record<string, JSX.Element> = {
-  react: <FaReact size={20} color="#61dafb" />,
-  node: <FaNodeJs size={20} color="#8CC84B" />,
-  firebase: <BiLogoFirebase size={20} color="#FFCA28" />,
-  typescript: <BiLogoTypescript size={20} color="#3178C6" />,
-  mongodb: <SiMongodb size={20} color="#47A248" />,
-  redux: <SiRedux size={20} color="#764ABC" />,
-  styled: <SiStyledcomponents size={23} color="#DB7093" />,
-  tailwindcss: <SiTailwindcss size={20} color="#06B6D4" />,
-  mysql: <GrMysql size={20} color="#4479A1" />,
-};
-
-// Define project type with specific stack keys
-type ProjectType = {
-  id: number;
-  onGoing?: boolean;
-  name: string;
-  bg: string;
-  stacks: Array<keyof typeof iconMapping>;
-  initials: string;
-};
-
-// Styled Components (unchanged)
 const Container = styled.div`
-  background-color: #222222;
-  color: rgb(204, 204, 204);
-  padding: 40px 30px;
-  background: linear-gradient(to top, #2d2d2d, #222222) !important;
-
-  .name {
-    font-size: 14px;
-  }
-
-  .project {
-    padding-top: 10px;
-    line-height: 1.4;
-  }
-
-  .tag {
-    width: 50px;
-    height: 2px;
-  }
-
-  .icon {
-    height: 4px;
-    width: 10px;
-    border-radius: 1px;
-    margin-right: 5px;
-  }
-
-  .done-icon {
-    background-color: #4caf50; /* Green for Done */
-  }
-
-  .ongoing-icon {
-    background-color: #c89339; /* Orange for Ongoing */
-  }
-
-  .icon-title {
-    font-size: 12px;
-  }
-
-  .done-title {
-    color: #4caf50; /* Green for Done */
-  }
-
-  .ongoing-title {
-    color: #c89339; /* Orange for Ongoing */
-  }
-`;
-
-const Heading = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
-  text-transform: uppercase;
-`;
-
-const Line = styled.div`
-  background: linear-gradient(to left, #2d2d2d, #4caf50);
-  height: 4px;
-  width: 170px;
-  border-radius: 1px;
-  margin-bottom: 10px;
-  margin-top: 5px;
-`;
-
-const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  width: 30px;
-  background: linear-gradient(to right, #2d2d2d, #7e967f);
+  margin-top: 30px;
+  margin-bottom: 40px;
 `;
 
 const DivA = styled.div`
@@ -200,54 +109,47 @@ const Done = styled(Status)`
   background-color: #4d924f; /* Green for Done */
 `;
 
-const Work = () => {
+const RelatedClone = () => {
+  const iconMapping: Record<string, JSX.Element> = {
+    react: <FaReact size={20} color="#61dafb" />,
+    node: <FaNodeJs size={20} color="#8CC84B" />,
+    firebase: <BiLogoFirebase size={20} color="#FFCA28" />,
+    typescript: <BiLogoTypescript size={20} color="#3178C6" />,
+    mongodb: <SiMongodb size={20} color="#47A248" />,
+    redux: <SiRedux size={20} color="#764ABC" />,
+    styled: <SiStyledcomponents size={23} color="#DB7093" />,
+    tailwindcss: <SiTailwindcss size={20} color="#06B6D4" />,
+    mysql: <GrMysql size={20} color="#4479A1" />,
+  };
+
+  // Define project type with specific stack keys
+  type ProjectType = {
+    id: number;
+    onGoing?: boolean;
+    name: string;
+    bg: string;
+    stacks: Array<keyof typeof iconMapping>;
+    initials: string;
+  };
+
+  const { setAutoScroll } = useSidebar();
+
+  const navigate = useNavigate();
+
   const projects: ProjectType[] = [
     {
       onGoing: true,
       id: 1,
-      name: "Lovebirdz ",
+      name: "LinkedIn Clone",
       stacks: ["react", "node", "firebase"],
       bg: "#D59C3B",
       initials: "LB",
     },
   ];
 
-  const { setAutoScroll } = useSidebar();
-
-  const navigate = useNavigate();
-
   return (
     <Container>
-      <div className="flex">
-        <div className="mr-md">
-          <Heading>My Projects</Heading>
-          <Line />
-        </div>
-        <IconContainer className="flex center">
-          <MdWorkHistory size={22} color="#ffffff" />
-        </IconContainer>
-      </div>
-
-      <div>
-        <div className="flex">
-          <p className="project">
-            Welcome! Below are the projects where I got my hands dirty. These
-            projects showcase my expertise in full-stack development, from
-            frontend interfaces to backend databases, highlighting my diverse
-            skill set and commitment to quality.
-          </p>
-        </div>
-      </div>
-      <div className="flex gap-sm">
-        <div className="flex align-center mt-sm">
-          <div className="icon done-icon" />
-          <p className="icon-title done-title">Completed</p>
-        </div>
-        <div className="flex align-center mt-sm">
-          <div className="icon ongoing-icon" />
-          <p className="icon-title ongoing-title">Ongoing</p>
-        </div>
-      </div>
+      <p>Below are some real life application clones </p>
 
       <GridContainer>
         {projects.map((project) => (
@@ -281,12 +183,8 @@ const Work = () => {
           </Project>
         ))}
       </GridContainer>
-
-      {/* <div>
-        <RelatedClone />
-      </div> */}
     </Container>
   );
 };
 
-export default Work;
+export default RelatedClone;

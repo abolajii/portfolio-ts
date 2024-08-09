@@ -269,7 +269,7 @@ const Work = () => {
       <div className="flex gap-sm">
         <div className="flex align-center mt-sm">
           <div className="icon done-icon" />
-          <p className="icon-title done-title">Done</p>
+          <p className="icon-title done-title">Completed</p>
         </div>
         <div className="flex align-center mt-sm">
           <div className="icon ongoing-icon" />

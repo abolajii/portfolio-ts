@@ -11,6 +11,7 @@ interface Step {
   description: string;
   status: StepStatus;
   statusDescription: string;
+  date: string;
 }
 
 interface StepperProps {
@@ -21,6 +22,12 @@ const StepContainer = styled.div`
   display: flex;
   align-items: center;
   /* margin-bottom: 20px; */
+
+  .date {
+    font-size: 10px;
+    margin-left: 7px;
+    color: rgba(240, 250, 240, 0.6);
+  }
 `;
 
 const StepIconContainer = styled.div<{ status: StepStatus }>`
@@ -70,9 +77,12 @@ const Stepper: React.FC<StepperProps> = ({ steps }) => {
                 <MdPendingActions size={13} className="spin" />
               )}
             </StepIconContainer>
-            <StepDescription status={step.status}>
-              {step.description}
-            </StepDescription>
+            <div>
+              <StepDescription status={step.status}>
+                {step.description}
+              </StepDescription>
+              <p className="date">{step.date}</p>
+            </div>
           </StepContainer>
           {index < steps.length - 1 && <Line />}
         </React.Fragment>

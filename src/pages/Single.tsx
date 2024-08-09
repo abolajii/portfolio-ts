@@ -11,19 +11,10 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { FaAngleLeft } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
-import Stepper from "../components/Stepper";
+import Workflow from "../components/Workflow";
 import styled from "styled-components";
 import { useActiveLink } from "../store/useActiveLink";
 import { useSidebar } from "../store/useSidebar";
-
-type StepStatus = "notStarted" | "inProgress" | "done";
-
-interface Step {
-  number: number;
-  description: string;
-  status: StepStatus;
-  statusDescription: string;
-}
 
 const iconMapping: Record<string, JSX.Element> = {
   react: <FaReact size={20} color="#61dafb" />,
@@ -257,39 +248,6 @@ const Single = () => {
 
   const navigate = useNavigate();
 
-  const steps: Step[] = [
-    {
-      number: 1,
-      description: "Fix Sidebar Icon",
-      status: "done", // Explicitly typed as one of "done" | "inProgress" | "notStarted"
-      statusDescription: "Completed",
-    },
-    {
-      number: 2,
-      description: "Create Dashboard component",
-      status: "done",
-      statusDescription: "Done",
-    },
-    {
-      number: 3,
-      description: "Create like button",
-      status: "inProgress",
-      statusDescription: "In Progress",
-    },
-    {
-      number: 4,
-      description: "Implement Login functionality",
-      status: "inProgress",
-      statusDescription: "In Progress",
-    },
-    {
-      number: 5,
-      description: "Endpoint creation",
-      status: "notStarted",
-      statusDescription: "Not Started",
-    },
-  ];
-
   return (
     <Container>
       <Goback
@@ -311,7 +269,8 @@ const Single = () => {
           )}
         </div>
       </div>
-      {project?.onGoing && <Stepper steps={steps} />}
+      {project?.onGoing && <Workflow />}
+      {/* {project?.onGoing && <Stepper steps={steps} />} */}
     </Container>
   );
 };

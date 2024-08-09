@@ -1,8 +1,9 @@
-import { FaCheckCircle, FaSpinner } from "react-icons/fa";
-
+// import { FaSpinner } from "react-icons/fa";
+import { IoMdCheckmark } from "react-icons/io";
+import { MdPendingActions } from "react-icons/md";
 import React from "react";
+import { TbRotateClockwise2 } from "react-icons/tb";
 import styled from "styled-components";
-
 type StepStatus = "notStarted" | "inProgress" | "done";
 
 interface Step {
@@ -47,9 +48,9 @@ const StepDescription = styled.div<{ status: StepStatus }>`
 
 const Line = styled.div`
   width: 2px;
-  height: 20px;
-  background-color: #c8c8c8;
-  margin: 3px 0;
+  height: 24px;
+  background-color: rgba(204, 204, 204, 0.5);
+  margin: 5px 0;
   margin-left: 9px;
   border-radius: 3px;
 `;
@@ -62,11 +63,11 @@ const Stepper: React.FC<StepperProps> = ({ steps }) => {
           <StepContainer>
             <StepIconContainer status={step.status}>
               {step.status === "done" ? (
-                <FaCheckCircle size={12} />
+                <IoMdCheckmark size={13} />
               ) : step.status === "inProgress" ? (
-                <FaSpinner size={12} className="spin" />
+                <TbRotateClockwise2 size={13} className="spin" />
               ) : (
-                <span>{step.number}</span>
+                <MdPendingActions size={13} className="spin" />
               )}
             </StepIconContainer>
             <StepDescription status={step.status}>

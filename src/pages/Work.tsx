@@ -190,6 +190,7 @@ const Work = () => {
     {
       id: 2,
       bg: "#3b5346",
+      onGoing: true,
       name: "Lovebirdz Admin",
       stacks: ["react", "node", "firebase"],
       initials: "LA",

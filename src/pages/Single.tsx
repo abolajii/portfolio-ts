@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { FaAngleLeft } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
+import ProjectDetails from "./ProjectDetails";
 import Workflow from "../components/Workflow";
 import styled from "styled-components";
 import { useActiveLink } from "../store/useActiveLink";
@@ -269,8 +270,10 @@ const Single = () => {
           )}
         </div>
       </div>
+      {/* PROJECT DETAILS */}
+      <ProjectDetails />
+      {/* PROJECT DETAILS */}
       {project?.onGoing && <Workflow />}
-      {/* {project?.onGoing && <Stepper steps={steps} />} */}
     </Container>
   );
 };

@@ -158,6 +158,10 @@ img {
   gap: 10px;
 }
 
+.gap-md {
+  gap: 20px;
+}
+
 /* Grid Utility Classes */
 .grid {
   display: grid;

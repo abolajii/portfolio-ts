@@ -23,8 +23,8 @@ const StepContainer = styled.div`
 `;
 
 const StepIconContainer = styled.div<{ status: StepStatus }>`
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background-color: ${({ status }) =>
     status === "done"

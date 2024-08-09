@@ -240,12 +240,24 @@ const Single = () => {
     {
       number: 2,
       description: "Create Dashboard component",
-      status: "inProgress",
-      statusDescription: "In Progress",
+      status: "done",
+      statusDescription: "Done",
     },
     {
       number: 3,
       description: "Create like button",
+      status: "inProgress",
+      statusDescription: "In Progress",
+    },
+    {
+      number: 4,
+      description: "Implement Login functionality",
+      status: "inProgress",
+      statusDescription: "In Progress",
+    },
+    {
+      number: 5,
+      description: "Endpoint creation",
       status: "notStarted",
       statusDescription: "Not Started",
     },

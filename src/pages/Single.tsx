@@ -213,7 +213,7 @@ const Status = styled.div`
 `;
 
 const Ongoing = styled(Status)`
-  background-color: rgb(218, 105, 152); /* Orange for Ongoing */
+  background-color: #c89339; /* Orange for Ongoing */
 `;
 
 const Done = styled(Status)`

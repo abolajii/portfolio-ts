@@ -9,6 +9,7 @@ import {
 
 import { GrMysql } from "react-icons/gr";
 import { MdWorkHistory } from "react-icons/md";
+import bg1 from "../assets/lb1.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useSidebar } from "../store/useSidebar";
@@ -68,7 +69,7 @@ const Container = styled.div`
   }
 
   .ongoing-icon {
-    background-color: rgb(230, 97, 153); /* Orange for Ongoing */
+    background-color: #c89339; /* Orange for Ongoing */
   }
 
   .icon-title {
@@ -80,7 +81,7 @@ const Container = styled.div`
   }
 
   .ongoing-title {
-    color: rgb(230, 97, 153); /* Orange for Ongoing */
+    color: #c89339; /* Orange for Ongoing */
   }
 `;
 
@@ -114,19 +115,32 @@ const Project = styled.div`
   height: 100%;
   background-color: #2d2d2d;
   color: rgb(204, 204, 204);
-  overflow: hidden;
   background-color: #222;
   border: 1px solid rgba(0, 255, 0, 0.09);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
 `;
 
 const DivA = styled.div`
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  position: relative;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const DivB = styled.div`
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
   padding: 10px;
   color: white;
   display: flex;
@@ -148,19 +162,6 @@ const GridContainer = styled.div`
   margin-top: 20px;
 `;
 
-const ProjectInitials = styled.div<{ bgColor: string }>`
-  width: 60px;
-  height: 60px;
-  background-color: ${(props) => props.bgColor};
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
-`;
-
 const ViewProjectButton = styled.button`
   font-size: 12px;
   padding: 9px 5px;
@@ -173,8 +174,24 @@ const ViewProjectButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #548f57; /* Darker green on hover */
   }
+`;
+
+const Status = styled.div`
+  padding: 4px 9px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-top: 10px;
+  width: 50px;
+`;
+
+const Ongoing = styled(Status)`
+  background-color: #c89339; /* Orange for Ongoing */
+`;
+
+const Done = styled(Status)`
+  background-color: #4d924f; /* Green for Done */
 `;
 
 const Work = () => {
@@ -288,18 +305,8 @@ const Work = () => {
             }}
           >
             <DivA>
-              <div className="flex justify-end">
-                <div
-                  className={
-                    project.onGoing ? "ongoing-icon tag" : "done-icon tag"
-                  }
-                />
-              </div>
-              <div className="center h-100">
-                <ProjectInitials bgColor={project.bg}>
-                  {project.initials}
-                </ProjectInitials>
-              </div>
+              <img src={bg1} />
+              <div className="backdrop"></div>
             </DivA>
             <DivB className="flex justify-between align-center">
               <div className="flex-1">
@@ -310,8 +317,10 @@ const Work = () => {
                   ))}
                 </div>
               </div>
-              <div>
+              <div className="flex align-end flex-column">
                 <ViewProjectButton>VIEW PROJECT</ViewProjectButton>
+
+                {project?.onGoing ? <Ongoing /> : <Done />}
               </div>
               {/* Project Details */}
             </DivB>

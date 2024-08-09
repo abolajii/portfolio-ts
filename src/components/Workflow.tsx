@@ -28,7 +28,7 @@ const Container = styled.div`
   ) !important;
 
   h2 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   @media screen and (max-width: 768px) {
@@ -121,16 +121,19 @@ const Workflow: React.FC = () => {
 
   return (
     <Container>
+      <h2>Project Tracker</h2>
       {!showSteps ? (
         <>
-          <h2>Project Tracker</h2>
-          <p>View </p>
-          {!loading && <Button onClick={handleClick}>View</Button>}
+          {!loading && (
+            <>
+              <p>Want to see where project stand? Click below to view</p>
+              <Button onClick={handleClick}>View</Button>
+            </>
+          )}
           {loading && <Spinner />}
         </>
       ) : (
         <>
-          <h2>Project Tracker</h2>
           <Stepper steps={steps} />
         </>
       )}

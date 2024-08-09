@@ -143,6 +143,10 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(4, 1fr); /* Always create 4 equal columns */
   gap: 20px;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
 `;
 
 const Project = styled.div`

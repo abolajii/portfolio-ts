@@ -192,6 +192,20 @@ const Container = styled.div`
   background: linear-gradient(to bottom, #222222, rgba(76, 175, 80, 0.05));
   .top {
     margin-bottom: 20px;
+
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 17px;
+        margin-bottom: 7px;
+      }
+
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
   }
 `;
 
@@ -199,6 +213,11 @@ const Status = styled.div`
   padding: 4px 12px;
   border-radius: 3px;
   font-size: 14px;
+
+  @media screen and (max-width: 768px) {
+    /* padding: 20px; */
+    margin-bottom: 20px;
+  }
 `;
 
 const Ongoing = styled(Status)`
@@ -221,6 +240,11 @@ const Goback = styled.button`
 
   &:hover {
     background-color: #419646; /* Darker green on hover */
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
 `;
 

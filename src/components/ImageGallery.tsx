@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const SliderContainer = styled.div`
   position: relative;
@@ -39,6 +40,10 @@ const SlideItem = styled.div`
     background: rgba(0, 0, 0, 0.3);
     border-radius: 6px;
   }
+
+  @media screen and (max-width: 768px) {
+    flex: 1 0 33.3%;
+  }
 `;
 
 const ArrowButton = styled.button<{
@@ -65,7 +70,8 @@ interface ImageGalleryProps {
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(1);
-  const imagesPerView = 5; // Number of images to show per view
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const imagesPerView = isMobile ? 3 : 5; // Number of images to show per view
 
   const totalImages = images.length;
   const maxIndex = Math.ceil(totalImages / imagesPerView);

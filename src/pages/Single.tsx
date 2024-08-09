@@ -220,7 +220,7 @@ const Goback = styled.button`
   border-radius: 4px;
 
   &:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #419646; /* Darker green on hover */
   }
 `;
 

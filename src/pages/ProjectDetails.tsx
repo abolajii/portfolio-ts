@@ -2,8 +2,17 @@
 
 import { FaNodeJs, FaReact } from "react-icons/fa";
 
+import ImageGallery from "../components/ImageGallery";
 import { SiMongodb } from "react-icons/si";
 import bg1 from "../assets/lb1.png";
+import bg2 from "../assets/lb2.png";
+import bg3 from "../assets/lb3.png";
+import bg4 from "../assets/lb4.png";
+import bg5 from "../assets/lb5.png";
+import bg6 from "../assets/lb6.png";
+import bg7 from "../assets/lb7.png";
+import bg8 from "../assets/lb8.png";
+import bg9 from "../assets/lb9.png";
 import mbg1 from "../assets//mobilelb1.png";
 import styled from "styled-components";
 
@@ -77,6 +86,7 @@ const SmallImage = styled.div`
 const Stack = styled.div`
   h3 {
     margin-top: 30px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -118,6 +128,25 @@ const ProjectDetails = () => {
       </Container>
       <Stack>
         <h3>Gallery</h3>
+        <ImageGallery
+          images={[
+            bg1,
+            bg2,
+            bg3,
+            bg4,
+            bg5,
+            bg6,
+            bg7,
+            bg8,
+            bg9,
+            bg1,
+            bg2,
+            bg3,
+            bg4,
+            bg5,
+            bg6,
+          ]}
+        />
       </Stack>
     </>
   );

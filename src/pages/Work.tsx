@@ -109,19 +109,6 @@ const IconContainer = styled.div`
   background: linear-gradient(to right, #2d2d2d, #7e967f);
 `;
 
-const Project = styled.div`
-  display: grid;
-  grid-template-rows: minmax(200px, 2fr) minmax(100px, 1fr); /* 2/3 for image, 1/3 for details */
-  height: 100%;
-  background-color: #2d2d2d;
-  color: rgb(204, 204, 204);
-  background-color: #222;
-  border: 1px solid rgba(0, 255, 0, 0.09);
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-`;
-
 const DivA = styled.div`
   position: relative;
   img {
@@ -141,7 +128,7 @@ const DivA = styled.div`
 `;
 
 const DivB = styled.div`
-  padding: 10px;
+  padding: 0px 10px;
   color: white;
   display: flex;
   background: linear-gradient(
@@ -149,17 +136,31 @@ const DivB = styled.div`
     #222,
     rgba(76, 175, 80, 0.04)
   ) !important;
-  /* import { useNavigate } from 'react-router-dom';
-flex-import { useNavigate } from 'react-router-dom';
-direcimport { useNavigate } from 'react-router-dom';
-tion: column; */
 `;
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* Always create 4 equal columns */
   gap: 20px;
   margin-top: 20px;
+`;
+
+const Project = styled.div`
+  display: grid;
+  grid-template-rows: minmax(200px, 2fr) minmax(100px, 1fr); /* 2/3 for image, 1/3 for details */
+  height: 100%;
+  color: rgb(204, 204, 204);
+  background-color: #222;
+  border: 1px solid rgba(0, 255, 0, 0.09);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02); /* Optional hover effect */
+  }
 `;
 
 const ViewProjectButton = styled.button`
@@ -203,58 +204,6 @@ const Work = () => {
       stacks: ["react", "node", "firebase"],
       bg: "#D59C3B",
       initials: "LB",
-    },
-    {
-      id: 2,
-      bg: "#3b5346",
-      onGoing: true,
-      name: "Lovebirdz Admin",
-      stacks: ["react", "node", "firebase"],
-      initials: "LA",
-    },
-    {
-      id: 3,
-      onGoing: true,
-      name: "Logistics Manager",
-      stacks: ["react", "node", "firebase"],
-      bg: "#AF238F",
-      initials: "LM",
-    },
-    {
-      id: 4,
-      name: "FlatHub",
-      stacks: ["react", "styled"],
-      initials: "FH",
-      bg: "#768BF2",
-    },
-    {
-      id: 5,
-      name: "One Card Nigeria",
-      stacks: ["react", "firebase", "redux"],
-      bg: "#4d63df",
-      initials: "OC",
-    },
-    {
-      id: 6,
-      name: "Afriskaut",
-      stacks: ["react", "tailwindcss", "node"],
-      bg: "#313e4e",
-      initials: "AF",
-    },
-    {
-      id: 7,
-      name: "WestPay",
-      bg: "#6b23af",
-
-      stacks: ["react", "mongodb"],
-      initials: "WP",
-    },
-    {
-      id: 8,
-      name: "Connect Nigeria",
-      bg: "#C82B0F",
-      stacks: ["react", "mysql"],
-      initials: "CN",
     },
   ];
 

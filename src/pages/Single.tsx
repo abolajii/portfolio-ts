@@ -214,10 +214,13 @@ const Goback = styled.button`
   width: 30px;
   border: 1px solid rgba(0, 255, 0, 0.09);
   background-color: transparent;
+  background: rgb(76, 175, 80);
+
   margin-bottom: 30px;
   border-radius: 4px;
+
   &:hover {
-    background: rgb(76, 175, 80);
+    background-color: #45a049; /* Darker green on hover */
   }
 `;
 

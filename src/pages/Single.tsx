@@ -6,13 +6,15 @@ import {
   SiStyledcomponents,
   SiTailwindcss,
 } from "react-icons/si";
-// import React from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 
 import { FaAngleLeft } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
+import Loading from "../components/Loading";
 import ProjectDetails from "./ProjectDetails";
+import React from "react";
 import Workflow from "../components/Workflow";
+import { getProject } from "../api/auth";
 import styled from "styled-components";
 import { useActiveLink } from "../store/useActiveLink";
 import { useSidebar } from "../store/useSidebar";
@@ -30,7 +32,7 @@ const iconMapping: Record<string, JSX.Element> = {
 };
 
 type ProjectType = {
-  id: number;
+  appId: number;
   onGoing?: boolean;
   name: string;
   bg?: string;
@@ -43,136 +45,6 @@ type ProjectType = {
     small: string[];
   };
 };
-
-const projects: ProjectType[] = [
-  {
-    id: 1,
-    onGoing: true,
-    name: "Lovebirdz",
-    stacks: ["react", "node", "firebase"],
-    link: "https://lovebirdz-app.web.app",
-    images: {
-      large: [],
-      small: [],
-    },
-    description:
-      "Embark on a journey of love with Lovebirdz, your premier dating application designed for meaningful connections. Whether you're insearch of romance or eager to reconnect with loved ones or colleagues, Lovebirdz offers a vibrant space for forging relationships. With personalized profiles and cutting-edge matching algorithms, Lovebirdz elevates your online dating experience, making it a seamless quest for genuine connections. Uncover the joy of discovering your perfect match or rekindling connections on Lovebirdz, where every interaction is an opportunity for love to blossom. Join Lovebirdz today and let your heart guide you to meaningful connections in the world of digital romance.",
-  },
-  {
-    id: 4,
-    name: "FlatHub",
-    stacks: ["react"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 3,
-    onGoing: true,
-    link: "https://logisticsmanagerapp.web.app",
-    name: "Logistics Manager",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-    description:
-      "Revolutionize your logistics management with Logistics Manager – the ultimate solution for seamless operations. Experience unmatched convenience as you effortlessly create single or multiple jobs, upload job details using Excel, and manage expenses with ease. Gain valuable insights with detailed daily, weekly, and monthly reports on your job activity, returns, and expenses. Our user-friendly interface empowers you to track the number of jobs, predict top clients for repeat jobs, and even create backdated jobs with full control. Stay on top of your business with activity charts showcasing monthly trends. Need quick communication? Send messages directly to clients. Transform your logistics experience with file uploads, comprehensive reports, and intuitive features. Elevate your business – simplify logistics with Logistics Manager!",
-  },
-  {
-    id: 5,
-    name: "One Card Nigeria",
-    stacks: ["react", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-    description: "",
-  },
-  {
-    id: 6,
-    name: "Afriskaut",
-    stacks: ["react"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 7,
-    name: "WestPay",
-    stacks: ["react"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 8,
-    name: "Connect Nigeria",
-    stacks: ["react"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 2,
-    onGoing: true,
-    name: "Lovebird Admin Page",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 9,
-    name: "WhatsApp Clone",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 10,
-    name: "Twitter Clone",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 11,
-    name: "Notion Clone",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 12,
-    name: "LinkedIn Clone",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-  {
-    id: 13,
-    name: "Message Clone",
-    stacks: ["react", "node", "firebase"],
-    images: {
-      large: [],
-      small: [],
-    },
-  },
-];
 
 const Container = styled.div`
   min-height: 100vh;
@@ -267,9 +139,30 @@ const Single = () => {
   const { setActiveLink } = useActiveLink();
   const { setAutoScroll } = useSidebar();
 
-  const project = projects.find((each) => each.id === Number(id));
+  const [project, setProject] = React.useState<ProjectType | null>(null);
 
   const navigate = useNavigate();
+  React.useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        const response = await getProject(id!);
+        const application = response.data;
+        // Map the data to your desired format
+        setProject(application);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProject();
+  }, [id]);
+
+  if (!project)
+    return (
+      <Container>
+        <Loading />
+      </Container>
+    );
 
   return (
     <Container>
@@ -294,7 +187,7 @@ const Single = () => {
         </div>
       </div>
       {/* PROJECT DETAILS */}
-      <ProjectDetails />
+      <ProjectDetails project={project} />
       <CTAButton>
         <a target="_blank" rel="noreferrer">
           VIEW SITE

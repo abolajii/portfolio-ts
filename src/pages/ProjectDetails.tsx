@@ -1,18 +1,17 @@
 // import React from 'react'
 
+import { BiLogoFirebase, BiLogoTypescript } from "react-icons/bi";
 import { FaNodeJs, FaReact } from "react-icons/fa";
+import {
+  SiMongodb,
+  SiRedux,
+  SiStyledcomponents,
+  SiTailwindcss,
+} from "react-icons/si";
 
+import { GrMysql } from "react-icons/gr";
 import ImageGallery from "../components/ImageGallery";
-import { SiMongodb } from "react-icons/si";
 import bg1 from "../assets/lb1.png";
-import bg2 from "../assets/lb2.png";
-import bg3 from "../assets/lb3.png";
-import bg4 from "../assets/lb4.png";
-import bg5 from "../assets/lb5.png";
-import bg6 from "../assets/lb6.png";
-import bg7 from "../assets/lb7.png";
-import bg8 from "../assets/lb8.png";
-import bg9 from "../assets/lb9.png";
 import mbg1 from "../assets//mobilelb1.png";
 import styled from "styled-components";
 
@@ -90,28 +89,47 @@ const Stack = styled.div`
   }
 `;
 
-const ProjectDetails = () => {
+type ProjectType = {
+  appId: number;
+  onGoing?: boolean;
+  name: string;
+  bg?: string;
+  stacks: Array<keyof typeof iconMapping>;
+  // initials: string;
+  link?: string;
+  description?: string;
+  images: {
+    large: string[];
+    small: string[];
+  };
+};
+
+type ProjectDetailsProps = {
+  project: ProjectType;
+};
+
+const iconMapping: Record<string, JSX.Element> = {
+  react: <FaReact size={20} color="#61dafb" />,
+  node: <FaNodeJs size={20} color="#8CC84B" />,
+  firebase: <BiLogoFirebase size={20} color="#FFCA28" />,
+  typescript: <BiLogoTypescript size={20} color="#3178C6" />,
+  mongodb: <SiMongodb size={20} color="#47A248" />,
+  redux: <SiRedux size={20} color="#764ABC" />,
+  styled: <SiStyledcomponents size={23} color="#DB7093" />,
+  tailwindcss: <SiTailwindcss size={20} color="#06B6D4" />,
+  mysql: <GrMysql size={20} color="#4479A1" />,
+};
+
+const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
   return (
     <>
       <Container className="flex gap-md">
         <div className="flex-1">
-          <p className="mb-6">
-            Embark on a journey of love with Lovebirdz, your premier dating
-            application designed for meaningful connections. Whether you're
-            insearch of romance or eager to reconnect with loved ones or
-            colleagues, Lovebirdz offers a vibrant space for forging
-            relationships. With personalized profiles and cutting-edge matching
-            algorithms, Lovebirdz elevates your online dating experience, making
-            it a seamless quest for genuine connections. Uncover the joy of
-            discovering your perfect match or rekindling connections on
-            Lovebirdz, where every interaction is an opportunity for love to
-            blossom. Join Lovebirdz today and let your heart guide you to
-            meaningful connections in the world of digital romance{" "}
-          </p>
+          <p className="mb-6">{project.description}</p>
           <div className="flex gap-md mt-md">
-            <FaReact size={20} color="#61dafb" />
-            <FaNodeJs size={20} color="#8CC84B" />
-            <SiMongodb size={20} color="#47A248" />
+            {project.stacks.map((stack) => (
+              <span key={stack}>{iconMapping[stack]}</span>
+            ))}
           </div>
         </div>
         <div className="flex-1 flex align-end">
@@ -127,26 +145,12 @@ const ProjectDetails = () => {
         </div>
       </Container>
       <Stack>
-        <h3>Gallery</h3>
-        <ImageGallery
-          images={[
-            bg1,
-            bg2,
-            bg3,
-            bg4,
-            bg5,
-            bg6,
-            bg7,
-            bg8,
-            bg9,
-            bg1,
-            bg2,
-            bg3,
-            bg4,
-            bg5,
-            bg6,
-          ]}
-        />
+        {project.images?.large.length > 0 && (
+          <>
+            <h3>Gallery</h3>
+            <ImageGallery images={[]} />
+          </>
+        )}
       </Stack>
     </>
   );

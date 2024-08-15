@@ -9,8 +9,10 @@ import {
 
 import { GrMysql } from "react-icons/gr";
 import { MdWorkHistory } from "react-icons/md";
+import React from "react";
 // import RelatedClone from "./RelatedClone";
 import bg1 from "../assets/lb1.png";
+import { getAllProjects } from "../api/auth";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useSidebar } from "../store/useSidebar";
@@ -29,12 +31,11 @@ const iconMapping: Record<string, JSX.Element> = {
 
 // Define project type with specific stack keys
 type ProjectType = {
-  id: number;
+  appId: number;
   onGoing?: boolean;
   name: string;
-  bg: string;
   stacks: Array<keyof typeof iconMapping>;
-  initials: string;
+  bg?: string;
 };
 
 // Styled Components (unchanged)
@@ -201,20 +202,44 @@ const Done = styled(Status)`
 `;
 
 const Work = () => {
-  const projects: ProjectType[] = [
-    {
-      onGoing: true,
-      id: 1,
-      name: "Lovebirdz ",
-      stacks: ["react", "node", "firebase"],
-      bg: "#D59C3B",
-      initials: "LB",
-    },
-  ];
+  const [projects, setProjects] = React.useState<ProjectType[]>([]);
 
   const { setAutoScroll } = useSidebar();
 
   const navigate = useNavigate();
+
+  // get projects
+
+  React.useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await getAllProjects();
+        const { applications } = response.data;
+        // Map the data to your desired format
+        const projects = applications.map((application: ApplicationType) => ({
+          appId: application.appId,
+          name: application.name,
+          stacks: application.stacks,
+          onGoing: application.onGoing,
+          bg: application.bg,
+        }));
+
+        setProjects(projects);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  type ApplicationType = {
+    appId: number;
+    name: string;
+    stacks: Array<keyof typeof iconMapping>;
+    onGoing: boolean;
+    bg?: string;
+  };
 
   return (
     <Container>
@@ -252,15 +277,15 @@ const Work = () => {
       <GridContainer>
         {projects.map((project) => (
           <Project
-            key={project.id}
+            key={project.appId}
             onClick={() => {
-              navigate("/project/" + project.id);
+              navigate("/project/" + project.appId);
               setAutoScroll(true);
             }}
           >
             <DivA>
-              <img src={bg1} />
-              <div className="backdrop"></div>
+              {project.bg !== "" && <img src={bg1} />}
+              {project.bg !== "" && <div className="backdrop"></div>}
             </DivA>
             <DivB className="flex justify-between align-center">
               <div className="flex-1">
@@ -273,7 +298,6 @@ const Work = () => {
               </div>
               <div className="flex align-end flex-column">
                 <ViewProjectButton>VIEW PROJECT</ViewProjectButton>
-
                 {project?.onGoing ? <Ongoing /> : <Done />}
               </div>
               {/* Project Details */}

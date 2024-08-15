@@ -1,4 +1,3 @@
-import React from "react";
 import Stepper from "./Stepper";
 import styled from "styled-components";
 

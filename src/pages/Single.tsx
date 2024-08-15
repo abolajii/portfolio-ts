@@ -189,7 +189,7 @@ const Single = () => {
       {/* PROJECT DETAILS */}
       <ProjectDetails project={project} />
       <CTAButton>
-        <a target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noreferrer" href={project.link}>
           VIEW SITE
         </a>
       </CTAButton>
